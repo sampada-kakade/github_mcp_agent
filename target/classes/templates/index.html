@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>🐙 GitHub MCP Agent (Java)</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      .container { max-width: 900px; margin: auto; }
+      label { display:block; margin-top: .5rem; }
+      textarea { width:100%; height:120px; }
+      .error { color: red; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🐙 GitHub MCP Agent (Java)</h1>
+      <p>Explore GitHub repositories with natural language. This Java version runs the GitHub MCP Docker server and captures its output.</p>
+
+      <form method="post" action="/run">
+        <label>OpenAI API Key (optional): <input type="password" name="openaiKey"></label>
+        <label>GitHub Token (optional): <input type="password" name="githubToken"></label>
+        <label>Repository: <input type="text" name="repo" value="${repo}"></label>
+        <label>Query: <select name="queryType" onchange="document.getElementById('query').value=this.value">
+            <option value="">Custom</option>
+            <option value="Find issues labeled as bugs in ${repo}">Issues</option>
+            <option value="Show me recent merged PRs in ${repo}">Pull Requests</option>
+            <option value="Analyze code quality trends in ${repo}">Repository Activity</option>
+          </select></label>
+        <label>Query text: <textarea id="query" name="query"></textarea></label>
+        <button type="submit">🚀 Run Query</button>
+      </form>
+
+      <div>
+        <p class="error">${error}</p>
+      </div>
+
+      <hr/>
+      <h3>How to use</h3>
+      <ol>
+        <li>Install Docker and Maven</li>
+        <li>Set `OPENAI_API_KEY` and `GITHUB_TOKEN` environment variables or provide them in the form</li>
+        <li>Click &quot;Run Query&quot; to run the MCP Docker container and capture output</li>
+      </ol>
+    </div>
+  </body>
+</html>

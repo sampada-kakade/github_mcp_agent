@@ -1,0 +1,6 @@
+com\example\githubmcpagent\GithubMcpAgentApplication.class
+com\example\githubmcpagent\service\LocalServerClient.class
+com\example\githubmcpagent\controller\WebController.class
+com\example\githubmcpagent\service\DockerService.class
+com\example\githubmcpagent\service\OpenAIService$ObjectNodeBuilder.class
+com\example\githubmcpagent\service\OpenAIService.class
