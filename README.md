@@ -7,6 +7,42 @@ Important notes:
 - It does not yet implement the full MCP agent orchestration from the original Python version.
 - Docker must be installed and available on the machine where you run this app.
 
+📘 Overview
+This project provides a Java client (LocalServerClient.java) that communicates with a locally running MCP Agent server at http://localhost:8080/run.
+It supports CLI arguments, retries, logging, and response persistence.
+
+🚀 Command Line Usage
+To execute the client, run:
+
+bash
+java -cp target/LocalServerClient-1.0-SNAPSHOT.jar LocalServerClient \
+  --query "Hello Copilot" \
+  --repo "my-repo" \
+  --retries 3 \
+  --backoff-ms 500
+Options
+--query → The query text to send to the server (required)
+
+--repo → The repository name to include in the request (optional)
+
+--retries → Number of retry attempts if the request fails (default: 3)
+
+--backoff-ms → Backoff time in milliseconds between retries (default: 500)
+
+✨ Features
+CLI support for --query, --repo, --retries, and --backoff-ms
+
+Configurable retry limit and backoff delay
+
+Timestamped INFO/WARN/ERROR logging
+
+Elapsed time logging per request attempt
+
+Response persistence to response_<timestamp>.json
+
+Summary log appending to client.log
+
+Formatted request/response logging
 Build and run
 
 1. Set required environment variables (either export or provide in the form):
